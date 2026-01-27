@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Contactez le Gîte du Héron à Lorleau pour toute information ou demande de séjour.">
+    <title>Le Gîte du Héron - Contact</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,600;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <a class="logo" href="/">Le Gîte du Héron</a>
+            <nav>
+                <ul class="nav-menu">
+                    <li><a href="/">Accueil</a></li>
+                    <li><a href="/gite/">Le gîte</a></li>
+                    <li><a href="/tarifs/">Tarifs</a></li>
+                    <li><a href="/acces/">Accès</a></li>
+                    <li><a href="/activites/">Activités</a></li>
+                    <li><a href="/contact/" class="active">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section class="page-header">
+            <div class="container">
+                <h1>Contact</h1>
+                <p class="page-subtitle">Nous sommes à votre écoute</p>
+            </div>
+        </section>
+
+        <section class="content-section">
+            <div class="container">
+                <div class="contact-wrapper">
+                    <article class="contact-info">
+                        <h2>Coordonnées</h2>
+                        <div class="address-box">
+                            <p><strong>Adresse :</strong></p>
+                            <p>Bernard & Cécile Dujardin<br>
+                            Gîte du Héron<br>
+                            19, rue de la Lieure<br>
+                            27480 – Lorleau</p>
+                            <p><strong>Téléphone :</strong> <a href="tel:+33609624617">06 09 62 46 17</a></p>
+                            <p><strong>Email :</strong> <a href="mailto:cecile.dujardin@orange.fr">cecile.dujardin@orange.fr</a></p>
+                        </div>
+                        <p class="contact-note">Réponse rapide. N’hésitez pas à préciser vos dates et le nombre de personnes.</p>
+                    </article>
+
+                    <article class="contact-form-wrapper">
+                        <h2>Envoyez-nous un message</h2>
+                        <form name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field" class="contact-form">
+                            <input type="hidden" name="form-name" value="contact">
+                            <p class="hidden">
+                                <label>Ne pas remplir si vous êtes humain : <input name="bot-field" /></label>
+                            </p>
+
+                            <div class="form-group">
+                                <label for="name">Nom et prénom <span class="required">*</span></label>
+                                <input type="text" id="name" name="name" required>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="email">Email <span class="required">*</span></label>
+                                <input type="email" id="email" name="email" required>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="message">Message <span class="required">*</span></label>
+                                <textarea id="message" name="message" rows="6" required></textarea>
+                            </div>
+
+                            <div class="form-group">
+                                <button type="submit" class="btn btn-primary">Envoyer le message</button>
+                            </div>
+
+                            <p class="gdpr-notice">
+                                <small>En soumettant ce formulaire, vous acceptez que vos données personnelles soient utilisées pour répondre à votre demande. Conformément au RGPD, vous disposez d'un droit d'accès, de rectification et de suppression de vos données. Pour plus d'informations, consultez notre <a href="/mentions-legales/">politique de confidentialité</a>.</small>
+                            </p>
+                        </form>
+                    </article>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>Bernard & Cécile Dujardin — Gîte du Héron, 19, rue de la Lieure, 27480 Lorleau</p>
+            <p>&copy; Le Gîte du Héron. Tous droits réservés.</p>
+            <p><a href="/mentions-legales/">Mentions légales</a></p>
+        </div>
+    </footer>
+</body>
+</html>

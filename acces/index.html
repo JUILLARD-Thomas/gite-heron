@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Accès et localisation du Gîte du Héron à Lorleau : adresse, distances et stationnement.">
+    <title>Le Gîte du Héron - Accès &amp; localisation</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,600;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <a class="logo" href="/">Le Gîte du Héron</a>
+            <nav>
+                <ul class="nav-menu">
+                    <li><a href="/">Accueil</a></li>
+                    <li><a href="/gite/">Le gîte</a></li>
+                    <li><a href="/tarifs/">Tarifs</a></li>
+                    <li><a href="/acces/" class="active">Accès</a></li>
+                    <li><a href="/activites/">Activités</a></li>
+                    <li><a href="/contact/">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section class="page-header">
+            <div class="container">
+                <h1>Accès &amp; localisation</h1>
+                <p class="page-subtitle">Situé à Lorleau, à seulement 2 km de Lyons-la-Forêt, le Gîte du Héron est facilement accessible en voiture et constitue un point de départ idéal pour découvrir la région.</p>
+            </div>
+        </section>
+
+        <section class="content-section">
+            <div class="container">
+                <div class="access-grid">
+                    <section class="access-card">
+                        <h2>Adresse</h2>
+                        <div class="address-box" id="address-text">
+                            <p><strong>Gîte du Héron</strong></p>
+                            <p>19, rue de la Lieure</p>
+                            <p>27480 Lorleau</p>
+                            <p>France</p>
+                        </div>
+                        <button class="btn btn-primary" id="copy-address-btn" type="button">Copier l’adresse</button>
+                        <p class="access-note">Parking intérieur disponible dans l’enceinte du gîte.</p>
+                    </section>
+
+                    <section class="access-card">
+                        <h2>Plan</h2>
+                        <div class="map-card" id="map-consent">
+                            <p>Pour afficher la carte, cliquez ci-dessous. Google Maps est un service externe susceptible de déposer des cookies.</p>
+                            <button class="btn btn-primary" id="load-gmap" type="button">Afficher la carte Google Maps</button>
+                            <a class="map-link" href="https://www.google.com/maps/search/?api=1&query=19%20Rue%20de%20la%20Lieure%2C%2027480%20Lorleau%2C%20France" target="_blank" rel="noopener">Ouvrir dans Google Maps</a>
+                        </div>
+                        <div class="map-embed" id="map-embed" aria-hidden="true"></div>
+                    </section>
+
+                    <section class="access-card">
+                        <h2>Informations pratiques</h2>
+                        <ul class="conditions-list">
+                            <li>Accès en voiture recommandé</li>
+                            <li>Parking intérieur sur place</li>
+                            <li>À 28 km de Rouen</li>
+                            <li>À 100 km de Paris</li>
+                        </ul>
+                    </section>
+
+                    <section class="access-card">
+                        <h2>Arrivée &amp; remise des clés</h2>
+                        <ul class="conditions-list">
+                            <li>Merci de nous contacter par téléphone ou par email afin de convenir de votre heure d’arrivée et de la remise des clés.</li>
+                        </ul>
+                    </section>
+                </div>
+            </div>
+        </section>
+
+        <section class="cta-section">
+            <div class="container">
+                <h2>Besoin d’un itinéraire ?</h2>
+                <p>Nous vous aidons volontiers pour organiser votre arrivée.</p>
+                <a href="/contact/" class="btn btn-primary">Demander des informations</a>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>Bernard & Cécile Dujardin — Gîte du Héron, 19, rue de la Lieure, 27480 Lorleau</p>
+            <p>&copy; Le Gîte du Héron. Tous droits réservés.</p>
+            <p><a href="/mentions-legales/">Mentions légales</a></p>
+        </div>
+    </footer>
+
+    <script>
+        const ADDRESS_TO_COPY = `Gîte du Héron
+19, rue de la Lieure
+27480 Lorleau
+France`;
+        const GMAP_EMBED_SRC = "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2595.6986658542155!2d1.4994650766728717!3d49.414603971412994!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47e72bde51f9805f%3A0xe54bb4bd2a483d9f!2s19%20Rue%20de%20la%20Lieure%2C%2027480%20Lorleau!5e0!3m2!1sfr!2sfr!4v1769534926259!5m2!1sfr!2sfr";
+        const GMAP_LINK_URL = "https://www.google.com/maps/search/?api=1&query=19%20Rue%20de%20la%20Lieure%2C%2027480%20Lorleau%2C%20France";
+
+        const copyBtn = document.getElementById('copy-address-btn');
+        const loadMapBtn = document.getElementById('load-gmap');
+        const mapConsent = document.getElementById('map-consent');
+        const mapEmbed = document.getElementById('map-embed');
+        const mapLink = mapConsent ? mapConsent.querySelector('.map-link') : null;
+
+        if (mapLink) {
+            mapLink.href = GMAP_LINK_URL;
+        }
+
+        const setCopyFeedback = () => {
+            if (!copyBtn) return;
+            const original = copyBtn.textContent;
+            copyBtn.textContent = 'Copié !';
+            setTimeout(() => {
+                copyBtn.textContent = original;
+            }, 2000);
+        };
+
+        const fallbackCopy = () => {
+            const textarea = document.createElement('textarea');
+            textarea.value = ADDRESS_TO_COPY;
+            textarea.setAttribute('readonly', '');
+            textarea.style.position = 'absolute';
+            textarea.style.left = '-9999px';
+            document.body.appendChild(textarea);
+            textarea.select();
+            try {
+                document.execCommand('copy');
+                setCopyFeedback();
+            } finally {
+                document.body.removeChild(textarea);
+            }
+        };
+
+        if (copyBtn) {
+            copyBtn.addEventListener('click', () => {
+                if (navigator.clipboard && navigator.clipboard.writeText) {
+                    navigator.clipboard.writeText(ADDRESS_TO_COPY).then(setCopyFeedback).catch(fallbackCopy);
+                } else {
+                    fallbackCopy();
+                }
+            });
+        }
+
+        if (loadMapBtn && mapEmbed) {
+            loadMapBtn.addEventListener('click', () => {
+                if (mapEmbed.childElementCount === 0) {
+                    const iframe = document.createElement('iframe');
+                    iframe.src = GMAP_EMBED_SRC;
+                    iframe.loading = 'lazy';
+                    iframe.referrerPolicy = 'no-referrer-when-downgrade';
+                    iframe.title = 'Carte Google Maps - Gîte du Héron';
+                    iframe.allowFullscreen = true;
+                    mapEmbed.appendChild(iframe);
+                    mapEmbed.setAttribute('aria-hidden', 'false');
+                    if (mapConsent) {
+                        mapConsent.style.display = 'none';
+                    }
+                }
+            });
+        }
+    </script>
+</body>
+</html>
