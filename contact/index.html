@@ -41,48 +41,39 @@
                     <article class="contact-info">
                         <h2>Coordonnées</h2>
                         <div class="address-box">
-                            <p><strong>Adresse :</strong></p>
-                            <p>Bernard & Cécile Dujardin<br>
-                            Gîte du Héron<br>
-                            19, rue de la Lieure<br>
-                            27480 – Lorleau</p>
-                            <p><strong>Téléphone :</strong> <a href="tel:+33609624617">06 09 62 46 17</a></p>
-                            <p><strong>Email :</strong> <a href="mailto:cecile.dujardin@orange.fr">cecile.dujardin@orange.fr</a></p>
+                            <div class="contact-line">
+                                <p><strong>Adresse :</strong><br>
+                                Bernard & Cécile Dujardin<br>
+                                Gîte du Héron<br>
+                                19, rue de la Lieure<br>
+                                27480 – Lorleau</p>
+                                <button class="copy-button" type="button" data-copy="Bernard &amp; Cécile Dujardin
+Gîte du Héron
+19, rue de la Lieure
+27480 – Lorleau" aria-label="Copier l'adresse postale">
+                                    <img class="copy-icon" src="../images/coller-le-presse-papiers.png" alt="" aria-hidden="true">
+                                </button>
+                                <span class="copy-feedback" aria-live="polite" role="status"></span>
+                            </div>
+                            <div class="contact-line">
+                                <span><strong>Téléphone :</strong> <a href="tel:+33609624617">06 09 62 46 17</a></span>
+                                <button class="copy-button" type="button" data-copy="06 09 62 46 17" aria-label="Copier le numéro de téléphone">
+                                    <img class="copy-icon" src="../images/coller-le-presse-papiers.png" alt="" aria-hidden="true">
+                                </button>
+                                <span class="copy-feedback" aria-live="polite" role="status"></span>
+                            </div>
+                            <div class="contact-line">
+                                <span><strong>Email :</strong> <a href="mailto:cecile.dujardin@orange.fr">cecile.dujardin@orange.fr</a></span>
+                                <button class="copy-button" type="button" data-copy="cecile.dujardin@orange.fr" aria-label="Copier l'adresse email">
+                                    <img class="copy-icon" src="../images/coller-le-presse-papiers.png" alt="" aria-hidden="true">
+                                </button>
+                                <span class="copy-feedback" aria-live="polite" role="status"></span>
+                            </div>
                         </div>
-                        <p class="contact-note">Réponse rapide. N’hésitez pas à préciser vos dates et le nombre de personnes.</p>
-                    </article>
-
-                    <article class="contact-form-wrapper">
-                        <h2>Envoyez-nous un message</h2>
-                        <form name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field" class="contact-form">
-                            <input type="hidden" name="form-name" value="contact">
-                            <p class="hidden">
-                                <label>Ne pas remplir si vous êtes humain : <input name="bot-field" /></label>
-                            </p>
-
-                            <div class="form-group">
-                                <label for="name">Nom et prénom <span class="required">*</span></label>
-                                <input type="text" id="name" name="name" required>
-                            </div>
-
-                            <div class="form-group">
-                                <label for="email">Email <span class="required">*</span></label>
-                                <input type="email" id="email" name="email" required>
-                            </div>
-
-                            <div class="form-group">
-                                <label for="message">Message <span class="required">*</span></label>
-                                <textarea id="message" name="message" rows="6" required></textarea>
-                            </div>
-
-                            <div class="form-group">
-                                <button type="submit" class="btn btn-primary">Envoyer le message</button>
-                            </div>
-
-                            <p class="gdpr-notice">
-                                <small>En soumettant ce formulaire, vous acceptez que vos données personnelles soient utilisées pour répondre à votre demande. Conformément au RGPD, vous disposez d'un droit d'accès, de rectification et de suppression de vos données. Pour plus d'informations, consultez notre <a href="../mentions-legales/">politique de confidentialité</a>.</small>
-                            </p>
-                        </form>
+                        <p class="contact-note">Réponse rapide. Merci de privilégier le contact par email.</p>
+                        <div class="contact-actions">
+                            <a class="btn btn-primary" href="mailto:cecile.dujardin@orange.fr">Envoyer un email</a>
+                        </div>
                     </article>
                 </div>
             </div>
@@ -96,5 +87,62 @@
             <p><a href="../mentions-legales/">Mentions légales</a></p>
         </div>
     </footer>
+    <script>
+        (() => {
+            const buttons = document.querySelectorAll('[data-copy]');
+            if (!buttons.length) {
+                return;
+            }
+
+            const fallbackCopy = (text) => {
+                const textarea = document.createElement('textarea');
+                textarea.value = text;
+                textarea.setAttribute('readonly', '');
+                textarea.style.position = 'fixed';
+                textarea.style.top = '-9999px';
+                document.body.appendChild(textarea);
+                textarea.select();
+                const success = document.execCommand('copy');
+                document.body.removeChild(textarea);
+                return success;
+            };
+
+            const copyText = async (text) => {
+                if (navigator.clipboard && window.isSecureContext) {
+                    try {
+                        await navigator.clipboard.writeText(text);
+                        return true;
+                    } catch (error) {
+                        return fallbackCopy(text);
+                    }
+                }
+                return fallbackCopy(text);
+            };
+
+            const showFeedback = (element, message) => {
+                if (!element) {
+                    return;
+                }
+                element.textContent = message;
+                element.classList.add('is-visible');
+                if (element._copyTimeout) {
+                    clearTimeout(element._copyTimeout);
+                }
+                element._copyTimeout = setTimeout(() => {
+                    element.textContent = '';
+                    element.classList.remove('is-visible');
+                }, 1600);
+            };
+
+            buttons.forEach((button) => {
+                button.addEventListener('click', async () => {
+                    const text = button.getAttribute('data-copy');
+                    const feedback = button.parentElement.querySelector('.copy-feedback');
+                    const success = await copyText(text);
+                    showFeedback(feedback, success ? 'Copié' : 'Erreur');
+                });
+            });
+        })();
+    </script>
 </body>
 </html>
