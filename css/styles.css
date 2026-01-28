@@ -887,6 +887,106 @@ header .container {
 
 
 
+
+
+/* Gîte – refonte page */
+.gallery-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1rem;
+    margin-top: 1.25rem;
+}
+
+@media (min-width: 900px) {
+    .gallery-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+.gallery-item {
+    margin: 0;
+}
+
+.gallery-item img {
+    width: 100%;
+    height: 320px;
+    object-fit: cover;
+    border-radius: 16px;
+    display: block;
+}
+
+.spaces-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+    margin-top: 1.25rem;
+}
+
+@media (min-width: 900px) {
+    .spaces-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+.space-card {
+    background: #fff;
+    border: 1px solid rgba(0, 0, 0, 0.12);
+    border-radius: 16px;
+    padding: 1.25rem;
+}
+
+.space-card h3 {
+    margin-top: 0;
+}
+
+.space-card p {
+    margin-bottom: 0.75rem;
+}
+
+.comfort-card h3 {
+    margin-top: 1.25rem;
+}
+
+.comfort-card h3:first-of-type {
+    margin-top: 0;
+}
+
+
+/* Le gîte – Les espaces grid fix */
+.gite-page .les-espaces-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    align-items: stretch;
+}
+
+@media (min-width: 900px) {
+    .gite-page .les-espaces-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+@media (min-width: 1280px) {
+    .gite-page .les-espaces-grid {
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+    }
+}
+
+.gite-page .les-espaces-grid > * {
+    height: 100%;
+}
+
+.gite-page .les-espaces-grid .space-card {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.gite-page .les-espaces-grid .space-card h3,
+.gite-page .les-espaces-grid .space-card .card-title {
+    min-height: 2.6em;
+    margin-top: 0;
+}
 /* Tarifs page */
 .table-responsive {
     width: 100%;
@@ -975,13 +1075,16 @@ header .container {
 
 .tarif-title { 
     margin: 0; 
-    font-size: 1.15rem; 
+    font-size: 1.35rem; 
+    font-weight: 600; 
+    line-height: 1.3; 
 }
 
 .tarif-price { 
-    margin: .75rem 0 0; 
-    font-size: 1.6rem; 
-    font-weight: 700; 
+    margin: .6rem 0 0; 
+    font-size: 1.2rem; 
+    font-weight: 500; 
+    color: var(--color-text-light); 
 }
 
 .tarif-highlight { 
