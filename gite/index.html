@@ -8,6 +8,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,600;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../vendor/glightbox/glightbox.min.css">
     <link rel="stylesheet" href="../css/styles.css">
 </head>
 <body class="gite-page">
@@ -39,16 +40,24 @@
                 <h2>En images</h2>
                 <div class="gallery-grid">
                     <figure class="gallery-item">
-                        <img src="../images/salon.jpg" alt="Salon du gîte avec cheminée et poutres">
+                        <a href="../images/salon.jpg" class="glightbox" data-gallery="gite" data-title="Salon du gîte">
+                            <img src="../images/salon.jpg" alt="Salon du gîte avec cheminée et poutres">
+                        </a>
                     </figure>
                     <figure class="gallery-item">
-                        <img src="../images/gite_exterieur.jpg" alt="Jardin du gîte avec mobilier extérieur">
+                        <a href="../images/gite_exterieur.jpg" class="glightbox" data-gallery="gite" data-title="Jardin du gîte">
+                            <img src="../images/gite_exterieur.jpg" alt="Jardin du gîte avec mobilier extérieur">
+                        </a>
                     </figure>
                     <figure class="gallery-item">
-                        <img src="../images/chambre_1.jpg" alt="Chambre du gîte">
+                        <a href="../images/chambre_1.jpg" class="glightbox" data-gallery="gite" data-title="Chambre du gîte">
+                            <img src="../images/chambre_1.jpg" alt="Chambre du gîte">
+                        </a>
                     </figure>
                     <figure class="gallery-item">
-                        <img src="../images/gite_panorama.jpg" alt="Vue panoramique du gîte et de son environnement">
+                        <a href="../images/gite_panorama.jpg" class="glightbox" data-gallery="gite" data-title="Vue panoramique du gîte">
+                            <img src="../images/gite_panorama.jpg" alt="Vue panoramique du gîte et de son environnement">
+                        </a>
                     </figure>
                 </div>
             </div>
@@ -60,21 +69,15 @@
                 <div class="spaces-grid les-espaces-grid">
                     <article class="space-card">
                         <h3>Pièces de vie</h3>
-                        <p>Au rez-de-chaussée, une grande pièce salon/cuisine de ≈ 60 m² avec bar permet de partager des moments conviviaux. Poutres anciennes, grande cheminée et volumes généreux offrent un cadre authentique et confortable.</p>
-                        <ul class="conditions-list">
-                            <li>Table de 4,00 m avec bancs</li>
-                            <li>Assises : 1 canapé 3 places + 2 bancs</li>
-                        </ul>
+                        <p>Au rez-de-chaussée, une grande pièce salon–cuisine d’environ 60 m² invite aux moments partagés.</p> 
+                        <p>Poutres anciennes, la grande cheminée et les volumes généreux créent une atmosphère chaleureuse et authentique, idéale pour se retrouver en famille ou entre amis autour de grandes tablées.</p>
                     </article>
 
                     <article class="space-card">
                         <h3>Capacité &amp; chambres</h3>
-                        <p>Pensé pour accueillir jusqu’à 12 personnes, le gîte dispose de 5 chambres confortables, permettant à chacun de profiter de son espace.</p>
-                        <ul class="conditions-list">
-                            <li>Jusqu’à 12 personnes</li>
-                            <li>5 chambres</li>
-                            <li>Literie : 4 lits doubles (140 cm), 4 lits simples (90 cm) et 1 lit bébé</li>
-                        </ul>
+                        <p>Le gîte peut accueillir jusqu’à 12 personnes et propose 5 chambres confortables.</p>
+                        <p>Pensée pour les séjours en famille ou entre amis, cette configuration permet à chacun de profiter de son propre espace tout en partageant des moments conviviaux.</p>
+                    
                     </article>
 
                     <article class="space-card">
@@ -158,5 +161,14 @@
             <p><a href="../mentions-legales/">Mentions légales</a></p>
         </div>
     </footer>
+    <script src="../vendor/glightbox/glightbox.min.js"></script>
+    <script>
+        const lightbox = GLightbox({
+            selector: '.glightbox',
+            touchNavigation: true,
+            loop: true,
+            closeButton: true
+        });
+    </script>
 </body>
 </html>
